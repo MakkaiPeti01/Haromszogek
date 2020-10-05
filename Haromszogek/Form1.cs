@@ -12,9 +12,9 @@ namespace Haromszogek
 {
     public partial class frmFo : Form
     {
-        private int aOldal;
-        private int bOldal;
-        private int cOldal;
+        private double aOldal;
+        private double bOldal;
+        private double cOldal;
         public frmFo()
         {
             aOldal = 0;
