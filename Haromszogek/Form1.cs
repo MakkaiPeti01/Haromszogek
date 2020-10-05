@@ -34,22 +34,30 @@ namespace Haromszogek
 
         private void btn_szamol_Click(object sender, EventArgs e)
         {
-            aOldal = int.Parse(tbAoldal.Text);
-            bOldal = int.Parse(tbBoldal.Text);
-            cOldal = int.Parse(tbColdal.Text);
-            if (aOldal == 0 || bOldal == 0 || cOldal == 0)
+            try
             {
-                MessageBox.Show("Nem lehet 0", "Nem lehet 0", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                var h = new Haromszog(aOldal, bOldal, cOldal);
-                //MessageBox.Show(szoveg.ToString(), "Ez most", MessageBoxButtons.OK, MessageBoxIcon.Information);               
-                List<string> adatok = h.AdatokSzoveg();
-                foreach (var i in adatok)
+                aOldal = int.Parse(tbAoldal.Text);
+                bOldal = int.Parse(tbBoldal.Text);
+                cOldal = int.Parse(tbColdal.Text);
+                if (aOldal == 0 || bOldal == 0 || cOldal == 0)
                 {
-                    lbHarmszogLista.Items.Add(i);
+                    MessageBox.Show("Nem lehet 0", "Nem lehet 0", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                {
+                    var h = new Haromszog(aOldal, bOldal, cOldal);
+                    //MessageBox.Show(szoveg.ToString(), "Ez most", MessageBoxButtons.OK, MessageBoxIcon.Information);               
+                    List<string> adatok = h.AdatokSzoveg();
+                    foreach (var i in adatok)
+                    {
+                        lbHarmszogLista.Items.Add(i);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Számot adjon meg!","Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbAoldal.Focus();
             }
         }
 
